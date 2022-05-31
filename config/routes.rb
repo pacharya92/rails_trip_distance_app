@@ -2,11 +2,17 @@ Rails.application.routes.draw do
 
   root 'sessions#welcome'
 
-  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
+  resources :users, only: [:new, :create]
 
-  get '/login', to: 'sessions#login'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
-  get '/logout', to: 'sessions#destroy'
+  get '/welcome', to: 'sessions#welcome'
+
+  get '/sign_in', to: 'sessions#new'
+  post '/sign_in', to: 'sessions#create'
+
+  get '/sign_up', to: 'registrations#new'
+  post '/sign_up', to: 'registrations#create'
+
+  delete 'logout', to: 'sessions#destroy'
+
 
 end

@@ -1,0 +1,7 @@
+<h1>Welcome to the Rails Trip Distance App</h1>
+<% if logged_in? %>
+  <h1>You are Logged in, <%= current_user.username %></h1>
+<%end%>
+
+<%= button_to "Login", '/login', method: :get%>
+<%= button_to "Sign up", '/users/new', method: :get%>

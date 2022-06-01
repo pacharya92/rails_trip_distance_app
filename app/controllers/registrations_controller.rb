@@ -10,7 +10,8 @@ class RegistrationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to welcome_path, notice: 'Successfully created account'
     else
-      render :new
+      flash[:alert] = 'Invalid username or password'
+      redirect_to sign_up_path
     end
   end
   private

@@ -10,13 +10,15 @@ class RegistrationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to welcome_path, notice: 'Successfully created account'
     else
-      flash[:alert] = 'Invalid username or password'
+      puts "In error"
+      puts @user.errors.full_messages
+      flash[:messages] = @user.errors.full_messages
       redirect_to sign_up_path
     end
   end
   private
   def user_params
     # strong parameters
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end

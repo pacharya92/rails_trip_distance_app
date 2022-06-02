@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_01_021039) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_02_095443) do
   create_table "locations", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "street_number"
+    t.string "street_name"
+    t.string "governing_district"
+    t.integer "governing_district_type"
+    t.string "city"
+    t.string "zip_code"
   end
 
   create_table "trips", force: :cascade do |t|

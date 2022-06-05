@@ -2,6 +2,8 @@ class TripsController < ApplicationController
   # instantiates new trip
   def new
     @trip = Trip.new
+    @location_one = Location.new
+    @location_two = Location.new
   end
   def create
     @trip = Trip.new(trip_params)
@@ -24,5 +26,8 @@ class TripsController < ApplicationController
   def trip_params
     # strong parameters
     params.require(:trip).permit(:name, :location_one, :location_two)
+  end
+  def location_params
+    params.require(:location).permit(:street_number, :street_address, :governing_district, :governing_district_type, :city, :zip_code)
   end
 end

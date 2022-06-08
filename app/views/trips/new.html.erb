@@ -3,8 +3,30 @@
     <%= msg %>
   </div>
 <% end %>
-<div class="px-6 h
 
+<%= form_with url: "/create_trip", model: @trip do |form| %>
+  <%= form.text_field :name, placeholder:'Trip Name' %>
+  <br />
+  <%= form.fields_for :locations, @location_one do |location| %>
+    <%= location.text_field :street_number, placeholder:'Street Number' %>
+    <%= location.text_field :street_name, placeholder:'Street Name' %>
+    <%= location.select :governing_district_type, ["State", "Province"] %>
+    <%= location.select :governing_district, ["Georgia"] %>
+    <%= location.text_field :city, placeholder:'City' %>
+    <%= location.text_field :zip_code, placeholder:'Zip Code' %>
+  <% end %>
+  <br />
+  <%= form.fields_for :locations, @location_two do |location| %>
+    <%= location.text_field :street_number, placeholder:'Street Number' %>
+    <%= location.text_field :street_name, placeholder:'Street Name' %>
+    <%= location.select :governing_district_type, ["State", "Province"] %>
+    <%= location.select :governing_district, ["Georgia"] %>
+    <%= location.text_field :city, placeholder:'City' %>
+    <%= location.text_field :zip_code, placeholder:'Zip Code' %>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
 <div class="w-full bg-no-repeat bg-cover" style="background-image: url(<%= asset_path('default-map.svg')%>); height: 100vh;">
   <section class="text-gray-600 body-font">
     <div class="container px-6 py-24 mx-auto">
@@ -13,13 +35,7 @@
           <h2 class="text-gray-900 text-2xl mb-1 font-bold title-font">Trip Distance Calculator</h2>
           <p class="leading-relaxed text-gray-600">Enter two different locations to calculate the total distance in the trip</p>
         </div>
-        <%= form_with url: "/create_trip", model: @location_one do |form| %>
-          <%= form.text_field :street_number, placeholder:'Street Number' %>
-          <%= form.text_field :street_name, placeholder:'Street Name' %>
-          <%= form.text_field :city, placeholder:'City' %>
-          <%= form.text_field :zip_code, placeholder:'Zip Code' %>
-          <%= form.submit %>
-        <% end %>
+
         <div class="flex-1 py-5 pl-5 overflow-hidden">
           <svg class="inline align-text-top" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg" fill="#000000">
             <g>

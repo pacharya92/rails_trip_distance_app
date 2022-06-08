@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
-  enum governing_district_type: [:state, :province]
-  # belongs_to :trip
+  enum governing_district_type: [:State, :Province]
+  belongs_to :trip
 end

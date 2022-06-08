@@ -1,8 +1,11 @@
-<h1>Hi</h1>
+<h1>Page to show all trips</h1>
+<br/>
 
 <% @location.each do |location| %>
     <%= location.street_number %>
     <%= location.street_name %>
+    <%= location.governing_district %>
     <%= location.city %>
     <%= location.zip_code %>
+    <br />
 <% end %>

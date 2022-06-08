@@ -1,1 +1,8 @@
 <h1>Hi</h1>
+
+<% @location.each do |location| %>
+    <%= location.street_number %>
+    <%= location.street_name %>
+    <%= location.city %>
+    <%= location.zip_code %>
+<% end %>

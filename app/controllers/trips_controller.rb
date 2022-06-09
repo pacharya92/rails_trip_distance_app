@@ -33,9 +33,9 @@ class TripsController < ApplicationController
   private
   def trip_params
     # strong parameters
-    params.require(:trip).permit(:name, locations_attributes: [:street_number, :street_name, :governing_district_type, :governing_district, :city, :zip_code])
+    params.require(:trip).permit(:name, locations_attributes: [:street_number, :street_name, :country, :governing_district_type, :governing_district, :city, :zip_code])
   end
   def location_params
-    params.require(:location).permit(:street_number, :street_name, :governing_district_type, :governing_district, :city, :zip_code)
+    params.require(:location).permit(:street_number, :street_name, :country, :governing_district_type, :governing_district, :city, :zip_code)
   end
 end

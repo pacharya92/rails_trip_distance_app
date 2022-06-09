@@ -67,9 +67,11 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Setup google map gem for use in the application
   Google::Maps.configure do |config|
     config.authentication_mode = Google::Maps::Configuration::API_KEY
     # Load via dotenv never commit API_KEY
-    config.api_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    config.api_key = ENV['GOOGLE_MAPS_API_KEY']
   end
 end

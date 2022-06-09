@@ -73,4 +73,9 @@ end
 
 gem "tailwindcss-rails", "~> 2.0"
 
+# https://github.com/zilverline/google-maps
+# google-map Gem 
 gem 'google-maps'
+
+# dotenv gem 
+gem 'dotenv-rails'

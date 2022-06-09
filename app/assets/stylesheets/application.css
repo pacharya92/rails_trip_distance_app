@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- html, body {
+ /* html, body {
   overflow: hidden;
   height: 100%;
 }
@@ -44,4 +44,4 @@ html, body, #container {
   0%   {opacity: 1;}
   90%  {opacity: 1;}
   100% {opacity: 0;}
-}
+} */

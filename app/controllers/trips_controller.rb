@@ -27,6 +27,7 @@ class TripsController < ApplicationController
   end
   # Change to find current trip
   def show
+    @trip = Trip.first
     @location = Location.all
   end
 

@@ -7,12 +7,12 @@ class TripsController < ApplicationController
     @location_two = Location.new
   end
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new(trip_params.merge(user_id: Current.user.id))
     
     # Check trip_params 
     # DELETE THIS
-    puts trip_params[:locations_attributes].values.first
-    puts trip_params[:locations_attributes].values.last
+    # puts trip_params
+    # puts trip_params[:locations_attributes].values.last
     puts " "
     if @trip.save
       # validate the trip is valid 
@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     else
       # puts "In error"
       # puts @user.errors.full_messages
-      flash[:messages] = @location.errors.full_messages
+      flash[:messages] = @trip.errors.full_messages
       redirect_to new_trip_path
     end
   end
@@ -34,7 +34,7 @@ class TripsController < ApplicationController
   private
   def trip_params
     # strong parameters
-    params.require(:trip).permit(:name, locations_attributes: [:street_number, :street_name, :country, :governing_district_type, :governing_district, :city, :zip_code])
+    params.require(:trip).permit(:name, :user_id, locations_attributes: [:street_number, :street_name, :country, :governing_district_type, :governing_district, :city, :zip_code])
   end
   def location_params
     params.require(:location).permit(:street_number, :street_name, :country, :governing_district_type, :governing_district, :city, :zip_code)

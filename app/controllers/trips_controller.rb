@@ -7,13 +7,19 @@ class TripsController < ApplicationController
     @location_two = Location.new
   end
   def create
+    @location_one = trip_params[:locations_attributes].values.first[:street_number] + trip_params[:locations_attributes].values.first[:street_name] + ", " + trip_params[:locations_attributes].values.first[:city] + ", " + trip_params[:locations_attributes].values.first[:governing_district] + " " + trip_params[:locations_attributes].values.first[:zip_code]
+    @location_two = trip_params[:locations_attributes].values.last[:street_number] + trip_params[:locations_attributes].values.last[:street_name] + ", " + trip_params[:locations_attributes].values.last[:city] + ", " + trip_params[:locations_attributes].values.last[:governing_district] + " " + trip_params[:locations_attributes].values.last[:zip_code]
+    
     @trip = Trip.new(trip_params.merge(user_id: Current.user.id))
     
-    # Check trip_params 
-    # DELETE THIS
-    # puts trip_params
-    # puts trip_params[:locations_attributes].values.last
+    @distance = Google::Maps.distance(@location_one, @location_two)
+    @travel_time = Google::Maps.duration(@location_one, @location_two)
+    
     puts " "
+    puts "The distance is " + @distance
+    puts "The travel time is " + @travel_time
+    puts " "
+    
     if @trip.save
       # validate the trip is valid 
       # Run Google map logic to get travel distance and travel time

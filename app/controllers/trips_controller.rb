@@ -10,8 +10,6 @@ class TripsController < ApplicationController
     @location_one = trip_params[:locations_attributes].values.first[:street_number] + trip_params[:locations_attributes].values.first[:street_name] + ", " + trip_params[:locations_attributes].values.first[:city] + ", " + trip_params[:locations_attributes].values.first[:governing_district] + " " + trip_params[:locations_attributes].values.first[:zip_code] + ", " + trip_params[:locations_attributes].values.last[:country]
     @location_two = trip_params[:locations_attributes].values.last[:street_number] + trip_params[:locations_attributes].values.last[:street_name] + ", " + trip_params[:locations_attributes].values.last[:city] + ", " + trip_params[:locations_attributes].values.last[:governing_district] + " " + trip_params[:locations_attributes].values.last[:zip_code] + ", " + trip_params[:locations_attributes].values.last[:country] 
     
-
-    
     @distance = Google::Maps.distance(@location_one, @location_two)
     @travel_time_route = Google::Maps.route(@location_one, @location_two)
     @travel_time_in_seconds = @travel_time_route.duration.value
@@ -24,7 +22,7 @@ class TripsController < ApplicationController
 
     # Use https://github.com/josedonizetti/ruby-duration to convert seconds to days, hours and minutes
     # Or Time.at(t).utc.strftime("%H:%M:%S")
-    @google_values = {"user_id" => Current.user.id, "distance" => @distance, "travel_time" =>  @travel_time_in_seconds}
+    @google_values = {"user_id" => Current.user.id, "distance" => @distance.gsub(/[\s,]/ ,"").to_i, "travel_time" =>  @travel_time_in_seconds}
     @trip = Trip.new(trip_params.merge(@google_values))
     
     if @trip.save

@@ -2,42 +2,8 @@
   <div class="px-4 py-4">
     <div class="inline-block shadow-md w-full rounded-lg overflow-hidden" >
       <table class="w-full leading-normal">
-        <thead>
-          <tr>
-            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Trip Name</th>
-            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Distance</th>
-            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Travel Time</th>
-            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Location One</th>
-            <th class="py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Location Two</th>
-          </tr>
-        </thead>
-        <tbody >
-        <% @trips.each do |trip| %>
-          <tr class="border-b border-gray-200">
-            <td class="px-5 py-5 bg-white text-sm">
-              <p class="text-gray-900 whitespace-no-wrap"> <%= trip.name %> </p>
-            </td>
-            <td class="px-5 py-5 bg-white text-sm">
-              <p class="text-gray-900 whitespace-no-wrap"> <%= trip.distance %> miles </p>
-            </td>
-            <td class="px-5 py-5 bg-white text-sm">
-              <p class="text-gray-900 whitespace-no-wrap"> <%= seconds_to_str(trip.travel_time) %></p>
-            </td>
-            <td class="px-5 py-5 bg-white text-sm">
-              <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"> </span>
-                <span class="relative"> <%= address_format(trip.locations.first) %> </span>
-              </span>
-            </td>
-            <td class="py-5 bg-white text-sm">
-              <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"> </span>
-                <span class="relative"> <%= trip.locations.last.street_name %> </span>
-              </span>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
+        <%= render partial: '/trips/table/trips_table_headings' %>
+        <%= render partial: '/trips/table/trips_table_body' %>
       </table>
     </div>
   </div>

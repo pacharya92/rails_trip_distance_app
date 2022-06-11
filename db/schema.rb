@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_10_034652) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_10_074127) do
   create_table "locations", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_10_034652) do
     t.json "location_one"
     t.json "location_two"
     t.float "distance"
-    t.time "travel_time"
+    t.float "travel_time"
     t.integer "user_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
     t.datetime "created_at", null: false

@@ -25,14 +25,14 @@
         </div>
       </div>
       <div class="flex" data-controller="country">
-        <div class="flex-grow  w-2/4 pr-2">
+        <div class="flex-grow  w-1/3 pr-2">
           <%= location.select :country, CS.countries.invert, {prompt: "Select a country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
         </div>
-        <div class="flex-grow  w-1/4 pr-2">
+        <div class="flex-grow  w-1/3 pr-2" style="display:none;">
           <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
         </div>
-        <div class="flex-grow w-1/4">
-          <%= location.select :governing_district, CS.states(:us), {}, class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+        <div class="flex-grow w-1/3">
+          <%= location.select :governing_district, [], {}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
         </div>
       </div>
       <div class="flex">
@@ -69,15 +69,15 @@
           <%= location.text_field :street_name, placeholder:'Street Name', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
         </div>
       </div>
-      <div class="flex">
-        <div class="flex-grow pr-2">
-          <%= location.text_field :country, placeholder:'Country',class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+      <div class="flex" data-controller="country">
+        <div class="flex-grow  w-1/3 pr-2">
+          <%= location.select :country, CS.countries.invert, {prompt: "Select a country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
         </div>
-        <div class="flex-grow pr-2">
+        <div class="flex-grow  w-1/3 pr-2" style="display:none;">
           <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
         </div>
-        <div class="flex-grow">
-          <%= location.select :governing_district, ["Georgia"], {}, class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+        <div class="flex-grow w-1/3">
+          <%= location.select :governing_district, [], {}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
         </div>
       </div>
       <div class="flex">

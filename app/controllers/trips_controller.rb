@@ -40,6 +40,14 @@ class TripsController < ApplicationController
   def show
     @trips = Trip.where(user_id: Current.user.id)
   end
+  def governing_district
+    # Get a list of governing districts depending on Country
+    @target = params[:target]
+    @governing_district = CS.get(params[:country]).invert
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 
   private
   def trip_params

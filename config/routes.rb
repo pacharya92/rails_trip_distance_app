@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root 'sessions#welcome'
 
   resources :users, only: [:new, :create]
-  resources :trips, only: [:new, :create]
   resources :locations
+  resources :trips do 
+    collection do 
+      get :governing_district
+    end
+  end
 
   get '/welcome', to: 'sessions#welcome'
 

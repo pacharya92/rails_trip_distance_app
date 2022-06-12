@@ -82,3 +82,6 @@ gem 'dotenv-rails'
 
 # Install Hotwire gem
 gem 'hotwire-rails'
+
+# Install City-State gem
+gem 'city-state'

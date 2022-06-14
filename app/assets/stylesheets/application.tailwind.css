@@ -5,9 +5,23 @@
 
 
 @layer components {
- .form-field-style{
-  @apply w-full px-4 py-2.5 mt-2 text-black placeholder-gray-600 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 ring-offset-current ring-offset-2 ring-gray-400
- }
+  .form-field-style{
+    @apply w-full xl:text-xl lg:text-base md:text-base sm:text-xs text-xs  px-4 py-2.5 mt-2 text-black placeholder-gray-600 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200 ring-offset-current ring-offset-2 ring-gray-400
+  }
+  .form-button-style{
+    @apply xl:text-xl lg:text-base md:text-base sm:text-xs text-xs flex flex-col rounded  text-white items-center bg-indigo-500 w-full border-0 py-2 px-6 
+  }
+  .form-heading-text-sizing {
+    @apply xl:text-3xl lg:text-3xl md:text-2xl sm:text-xl text-base
+  }
+  .form-field-text-style{
+    @apply xl:text-xl lg:text-base md:text-base sm:text-xs text-xs
+  }
+  .form-title{
+    @apply xl:text-3xl lg:text-3xl md:text-2xl sm:text-xl text-xl 
+  }
+  .form-description-text{
+    @apply xl:text-xl lg:text-xl md:text-xl sm:text-base text-base
+  } 
 }
-
 

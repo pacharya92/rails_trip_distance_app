@@ -1,97 +1,102 @@
 <%= form_with url: "/create_trip", model: @trip do |form| %>
-  <div class="flex items-center justify-center">
-      <%= form.text_field :name, placeholder:'Give The Trip A Name', class:"text-center text-black placeholder-gray-600 px-4 py-2.5 mt-2 text-base transition duration-500 ease-in-out transform rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" %>
+  <div class="flex items-center justify-center mb-10">
+      <%= form.text_field :name, placeholder:'Give The Trip A Name', class:"form-field-text-style text-center w-1/3 text-black placeholder-gray-600 px-4 py-2.5 mt-2 transition duration-500 ease-in-out transform rounded-lg bg-gray-200 focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" %>
   </div>
-  <!-- Address One heading -->
-  <div class="flex py-5 pl-5">
-    <svg class="inline align-text-top" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-      <g>
-        <path d="m4.88889,2.07407l14.22222,0l0,20l-14.22222,0l0,-20z" fill="none" id="svg_1" stroke="null"></path>
-        <path d="m7.07935,0.05664c-3.87,0 -7,3.13 -7,7c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7zm-5,7c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88c-2.08,-2.67 -5,-7.03 -5,-9.88z" id="svg_2"></path>
-        <circle cx="7.04807" cy="6.97256" r="2.5" id="svg_3"></circle>
-      </g>
-    </svg>
-    <h1 class="inline text-2xl font-semibold leading-none">Address One</h1>
-  </div>
-  <!-- Location One Form -->
-  <%= form.fields_for :locations, @location_one do |location| %>
-    <div class="px-5 pb-5">
-      <div class="flex">
-        <div class="flex-grow pr-2">
-          <%= location.text_field :street_number, placeholder:'Street Number', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow w-3/4">
-          <%= location.text_field :street_name, placeholder:'Street Name', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-      </div>
-      <div class="flex" data-controller="country">
-        <div class="flex-grow  w-1/3 pr-2">
-          <%= location.select :country, CS.countries.invert, {prompt: "Select a country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
-        </div>
-        <div class="flex-grow  w-1/3 pr-2" style="display:none;">
-          <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow w-1/3">
-          <%= location.select :governing_district, [], {}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex-grow w-3/4 pr-2">
-          <%= location.text_field :city, placeholder:'City', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow ">
-          <%= location.text_field :zip_code, placeholder:'Zip Code', class:" form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <!-- Address Two heading -->
   <div class="flex">
-    <div class="flex-1 py-5 pl-5 ">
-      <svg class="inline align-text-top" width="21" height="20.5" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-        <g>
-          <path d="m4.88889,2.07407l14.22222,0l0,20l-14.22222,0l0,-20z" fill="none" id="svg_1" stroke="null"></path>
-          <path d="m7.07935,0.05664c-3.87,0 -7,3.13 -7,7c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7zm-5,7c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88c-2.08,-2.67 -5,-7.03 -5,-9.88z" id="svg_2"></path>
-          <circle cx="7.04807" cy="6.97256" r="2.5" id="svg_3"></circle>
-        </g>
-      </svg>
-      <h1 class="inline text-2xl font-semibold leading-none">Address Two</h1>
+    <div class="basis-1/2">
+    <!-- Address One heading -->
+      <div class="flex mb-3 items-center justify-center form-heading-text-sizing">
+        <svg class="inline align-text-top" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+          <g>
+            <path d="m4.88889,2.07407l14.22222,0l0,20l-14.22222,0l0,-20z" fill="none" id="svg_1" stroke="null"></path>
+            <path d="m7.07935,0.05664c-3.87,0 -7,3.13 -7,7c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7zm-5,7c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88c-2.08,-2.67 -5,-7.03 -5,-9.88z" id="svg_2"></path>
+            <circle cx="7.04807" cy="6.97256" r="2.5" id="svg_3"></circle>
+          </g>
+        </svg>
+        <h1 class="inline font-semibold leading-none">Address One</h1>
+      </div>
+      <!-- Location One Form -->
+      <%= form.fields_for :locations, @location_one do |location| %>
+        <div class="px-5 pb-5">
+          <div class="flex mb-2">
+            <div class="flex-grow pr-2">
+              <%= location.text_field :street_number, placeholder:'Street Number', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="flex-grow w-3/4 pr-2">
+              <%= location.text_field :street_name, placeholder:'Street Name', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+          </div>
+          <div data-controller="country">
+            <div class="w-full pr-2 mb-2">
+              <%= location.select :country, CS.countries.invert, {prompt: "Select a Country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
+            </div>
+            <div class="flex-grow w-1/3 pr-2" style="display:none;">
+              <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="w-full pr-2 mb-2">
+              <%= location.select :governing_district, [], {prompt: "State/Province"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-grow w-2/4 pr-2">
+              <%= location.text_field :city, placeholder:'City', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="flex-grow w-2/4 pr-2 ">
+              <%= location.text_field :zip_code, placeholder:'Zip Code', class:" form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="basis-1/2 ">
+      <!-- Address Two heading -->
+      <div class="flex mb-3 items-center justify-center form-heading-text-sizing">
+        <svg class="inline align-text-top" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+          <g>
+            <path d="m4.88889,2.07407l14.22222,0l0,20l-14.22222,0l0,-20z" fill="none" id="svg_1" stroke="null"></path>
+            <path d="m7.07935,0.05664c-3.87,0 -7,3.13 -7,7c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7zm-5,7c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88c-2.08,-2.67 -5,-7.03 -5,-9.88z" id="svg_2"></path>
+            <circle cx="7.04807" cy="6.97256" r="2.5" id="svg_3"></circle>
+          </g>
+        </svg>
+        <h1 class="inline font-semibold leading-none">Address Two</h1>
+      </div>
+      <!-- Location Two Form -->
+      <%= form.fields_for :locations, @location_two do |location| %>
+        <div class="px-5 pb-5">
+          <div class="flex">
+            <div class="flex-grow pr-2 mb-2">
+              <%= location.text_field :street_number, placeholder:'Street Number', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="flex-grow w-3/4 pr-2">
+              <%= location.text_field :street_name, placeholder:'Street Name', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+          </div>
+          <div data-controller="country">
+            <div class="w-full pr-2 mb-2">
+              <%= location.select :country, CS.countries.invert, {prompt: "Select a Country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
+            </div>
+            <div class="flex-grow w-1/3 pr-2" style="display:none;">
+              <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="w-full pr-2 mb-2">
+              <%= location.select :governing_district, [], {prompt: "State/Province"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-grow w-2/4 pr-2">
+              <%= location.text_field :city, placeholder:'City', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+            <div class="flex-grow w-2/4 pr-2 ">
+              <%= location.text_field :zip_code, placeholder:'Zip Code', class:" form-field-style focus:border-blueGray-500 focus:bg-white" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-  <!-- Location Two Form -->
-  <%= form.fields_for :locations, @location_two do |location| %>
-    <div class="px-5 pb-5">
-      <div class="flex">
-        <div class="flex-grow pr-2">
-          <%= location.text_field :street_number, placeholder:'Street Number', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow w-3/4">
-          <%= location.text_field :street_name, placeholder:'Street Name', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-      </div>
-      <div class="flex" data-controller="country">
-        <div class="flex-grow  w-1/3 pr-2">
-          <%= location.select :country, CS.countries.invert, {prompt: "Select a country"}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data: { action: "change->country#change"} } %>
-        </div>
-        <div class="flex-grow  w-1/3 pr-2" style="display:none;">
-          <%= location.select :governing_district_type, ["State", "Province"],{},class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow w-1/3">
-          <%= location.select :governing_district, [], {}, { class:"form-field-style focus:border-blueGray-500 focus:bg-white", data:{ country_target: "governingDistrictSelect"} } %>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex-grow w-3/4 pr-2">
-          <%= location.text_field :city, placeholder:'City', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-        <div class="flex-grow ">
-          <%= location.text_field :zip_code, placeholder:'Zip Code', class:"form-field-style focus:border-blueGray-500 focus:bg-white" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
   <div class="px-5 pb-5">
     <hr class="mb-4" />
-    <%= form.submit "Find Distance and Travel Time", class:"text-white items-center bg-indigo-500 w-full border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 flex flex-col rounded text-lg" %>
+    <%= form.submit "Find Distance and Travel Time", class:"form-button-style focus:outline-none hover:bg-indigo-600" %>
   </div>
 <% end %>
+

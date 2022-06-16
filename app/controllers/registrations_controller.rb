@@ -10,8 +10,8 @@ class RegistrationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to welcome_path, notice: 'Successfully created account'
     else
-      puts "In error"
-      puts @user.errors.full_messages
+      # Show error if user cannot be saved to the database 
+      # Flash errors and redirect back to sign_up_path
       flash[:messages] = @user.errors.full_messages
       redirect_to sign_up_path
     end

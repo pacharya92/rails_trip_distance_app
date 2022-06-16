@@ -1,7 +1,5 @@
 <% flash.each do |type, msg| %>
-  <div id="hideMe" class="sticky top-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 text-center rounded relative">
-    <%= msg %>
-  </div>
+  <%= content_tag :div, msg.html_safe, { class:"sticky top-0 bg-red-100 text-xl border border-red-400 text-red-700 px-4 py-3 text-center rounded relative"} %>
 <% end %>
 <div class="w-full bg-no-repeat bg-cover" style="background-image: url(<%= asset_path('default-map.svg')%>); height: 100vh; overflow-y: scroll;">
   <section class="text-gray-600 body-font">

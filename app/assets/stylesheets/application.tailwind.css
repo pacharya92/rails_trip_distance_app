@@ -76,7 +76,7 @@
   
   
   .pagy-combo-nav-js {
-    @apply flex max-w-max rounded-full px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
+    @apply flex rounded-full px-3 py-1 text-sm text-gray-500 font-semibold bg-gray-200 shadow-md;
   }
   
   .pagy-combo-nav-js .pagy-combo-input {
@@ -99,3 +99,4 @@
   }
 
 }
+

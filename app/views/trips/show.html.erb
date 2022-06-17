@@ -1,10 +1,14 @@
 <div class="container mx-auto px-4">
   <div class="px-4 py-4">
-    <div class="inline-block shadow-md w-full rounded-lg overflow-hidden" >
+    <div class="mb-2 inline-block shadow-md w-full rounded-lg overflow-hidden"  >
       <table class="w-full leading-normal">
         <%= render partial: '/trips/table/trips_table_headings' %>
         <%= render partial: '/trips/table/trips_table_body' %>
       </table>
     </div>
+
+    <%== pagy_nav(@pagy)  %>
   </div>
+
+
 </div>

@@ -44,7 +44,7 @@ class TripsController < ApplicationController
   end
   def show
     # Find all trips connected to current logged in user 
-    @trips = Trip.where(user_id: Current.user.id)
+    @pagy, @trips = pagy(Trip.where(user_id: Current.user.id), items: 12)
   end
   def governing_district
     # Get a list of governing districts depending on Country

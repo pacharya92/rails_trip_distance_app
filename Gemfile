@@ -85,3 +85,6 @@ gem 'hotwire-rails'
 
 # Install City-State gem
 gem 'city-state'
+
+# Gem for pagination
+gem 'pagy', '~> 5.10', '>= 5.10.1'

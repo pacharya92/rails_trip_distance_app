@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   before_action :set_current_user
+
   helper_method :address_format, :seconds_to_str
+  
   def set_current_user
     # finds user with session data and stores it if present
     Current.user = User.find_by(id: session[:user_id]) if session[:user_id]

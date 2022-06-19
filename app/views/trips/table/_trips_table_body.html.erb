@@ -5,7 +5,7 @@
       <p class="text-gray-900 whitespace-no-wrap"> <%= trip.name %> </p>
     </td>
     <td class="px-5 py-5 bg-white text-sm">
-      <p class="text-gray-900 whitespace-no-wrap"> <%= trip.distance %> miles </p>
+      <p class="text-gray-900 whitespace-no-wrap"> <%= number_with_delimiter(number_with_precision(trip.distance, precision: 2,  strip_insignificant_zeros: true)) %> miles </p>
     </td>
     <td class="px-5 py-5 bg-white text-sm">
       <p class="text-gray-900 whitespace-no-wrap"> <%= seconds_to_str(trip.travel_time) %></p>

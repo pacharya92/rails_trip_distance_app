@@ -1,0 +1,8 @@
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto mt-10" >
+    <div class="xl:w-4/5 lg:w-3/4 bg-white p-8 flex flex-col md:mt-0 z-10 shadow-md rounded-lg mx-auto" >
+    <%= render partial: '/trips/form/trips_form_title', :trip => @trip %>
+    <hr class="mb-4" />  
+    <%= render partial: '/trips/form/trips_form_fields', :trip => @trip %>
+  </div>
+</section>

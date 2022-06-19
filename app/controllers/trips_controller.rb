@@ -65,8 +65,8 @@ class TripsController < ApplicationController
   def get_location_str
     location_one = "#{trip_params[:locations_attributes].values.first[:street_number]} #{trip_params[:locations_attributes].values.first[:street_name]}, #{trip_params[:locations_attributes].values.first[:city]}, #{trip_params[:locations_attributes].values.first[:governing_district]} #{trip_params[:locations_attributes].values.first[:zip_code]}, #{trip_params[:locations_attributes].values.last[:country]}"
     location_two = "#{trip_params[:locations_attributes].values.last[:street_number]} #{trip_params[:locations_attributes].values.last[:street_name]}, #{trip_params[:locations_attributes].values.last[:city]}, #{trip_params[:locations_attributes].values.last[:governing_district]} #{trip_params[:locations_attributes].values.last[:zip_code]}, #{trip_params[:locations_attributes].values.last[:country]}"
-    # Check if string isempty after removing commas
-
+   
+    # Check if string is empty after removing commas
     if remove_commas(location_one).present? && remove_commas(location_two).present?
       locations = [location_one, location_two]
     else

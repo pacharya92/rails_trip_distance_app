@@ -42,6 +42,10 @@ class TripsController < ApplicationController
       redirect_to new_trip_path
     end
   end
+  def create_trip_modal
+    @trip = Trip.new
+    @trip.locations.build
+  end
   def show
     # Find all trips connected to current logged in user 
     @pagy, @trips = pagy(Trip.where(user_id: Current.user.id), items: 10)

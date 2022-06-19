@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'sessions#create'
 
   get '/trip', to: 'trips#new'
-  post '/create_trip', to: 'trips#create'
+  get '/create_trip', to: 'trips#create_trip_modal'
   get '/show_trip', to: 'trips#show'
+  post '/create_trip', to: 'trips#create'
+
 
   get '/sign_up', to: 'registrations#new'
   post '/sign_up', to: 'registrations#create'

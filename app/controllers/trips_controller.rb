@@ -4,35 +4,21 @@ class TripsController < ApplicationController
     @trip = Trip.new
     @trip.locations.build
   end
+  # Create new trip and calcuate distance and travel_time
   def create
-   
     @locations = get_location_str
-    puts " "
-    puts "Line 11: Printing Trip parms"
-    puts @locations
-    puts " "
-
     if !@locations.blank?
+      # Call google_maps API to get disance and travel_time between locations
       @distance = Google::Maps.distance(@locations[0], @locations[1])
       @travel_time_route = Google::Maps.route(@locations[0], @locations[1])
+      # Save travel_time as seconds in the database
       @travel_time_in_seconds = @travel_time_route.duration.value
-
-      puts "-------------------------------------------"
-      puts "This is location_one: #{@locations[0]}"
-      puts " "
-      puts " "
-      puts "This is location_two: #{@locations[1]}"
-      puts "------------------------------------------"
-      puts " "
-      puts "The distance is " + @distance
-      puts "The travel time is " + @travel_time_route.duration.text
-      puts "The travel time in seconds is " + @travel_time_route.duration.value.to_s
-      puts " "
     end
 
+    # Add current user_id to Trip 
     @google_values = {"user_id" => Current.user.id, "distance" => remove_commas(@distance).to_i, "travel_time" =>  @travel_time_in_seconds}
     @trip = Trip.new(trip_params.merge(@google_values))
-    
+
     if @trip.save
       redirect_to show_trip_path
     else
@@ -48,6 +34,7 @@ class TripsController < ApplicationController
   end
   def show
     # Find all trips connected to current logged in user 
+    # Setup pagination for views
     @pagy, @trips = pagy(Trip.where(user_id: Current.user.id), items: 10)
   end
   def governing_district

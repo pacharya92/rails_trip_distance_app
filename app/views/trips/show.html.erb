@@ -1,18 +1,19 @@
-<div class="container mx-auto px-4">
+<div data-controller="visibility" class="container mx-auto px-4">
   <div class="px-4 py-4">
-    <div class="mb-2 inline-block shadow-md w-full rounded-lg overflow-hidden"  >
-      <table class="w-full leading-normal">
+    <div data-visibility-target="hideable" class="mb-2 inline-block shadow-md w-full rounded-lg overflow-hidden"  >
+      <table data-visibility-target="hideable" class="w-full leading-normal">
         <%= render partial: '/trips/table/trips_table_headings' %>
         <%= render partial: '/trips/table/trips_table_body' %>
       </table>
     </div>
-    <div class="flex">
-      <div class="w-4/5">
-        <%== pagy_nav(@pagy)  %>
+    <div data-visibility-target="hideable" class="flex">
+      <div data-visibility-target="hideable" class="w-4/5">
+        <%== pagy_nav(@pagy) %>
       </div>
-      <div class="flex w-1/5 justify-end ">
+      <div data-action="visibility#hideTargets" class="flex w-1/5 justify-end ">
         <%= link_to 'Add New Trip', create_trip_path, class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", data: { 'turbo-frame': 'modal' }%>
       </div>
     </div>
   </div>
+  <button data-action="visibility#hideTargets">Hide All Elements</button>
 </div>

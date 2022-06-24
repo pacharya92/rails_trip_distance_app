@@ -11,10 +11,17 @@ module TripsHelper
   end
   def google_maps_route_data(locations)
     # Call google_maps API to get disance and travel_time between locations
-    @distance = Google::Maps.distance(@locations[0], @locations[1])
-    @travel_time_route = Google::Maps.route(@locations[0], @locations[1])
+    distance = Google::Maps.distance(locations[0], locations[1])
+    travel_time_route = Google::Maps.route(locations[0], locations[1])
     # Save travel_time as seconds in the database
-    @travel_time_in_seconds = @travel_time_route.duration.value
-    google_data = [@distance, @travel_time_in_seconds]
+    travel_time_in_seconds = travel_time_route.duration.value
+    google_data = [distance, travel_time_in_seconds]
+  end
+  def remove_commas(str)
+    # Remove commas from string before saving to database 
+    # 1,743 => 1743
+    if !str.nil?
+      str.gsub(/[\s,]/ ,"")
+    end
   end
 end

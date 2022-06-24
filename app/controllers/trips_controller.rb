@@ -6,17 +6,14 @@ class TripsController < ApplicationController
   end
   # Create new trip and calcuate distance and travel_time
   def create
+    @google_values = {}
     @locations = get_location_str
     if !@locations.blank?
-      # Call google_maps API to get disance and travel_time between locations
-      @distance = Google::Maps.distance(@locations[0], @locations[1])
-      @travel_time_route = Google::Maps.route(@locations[0], @locations[1])
-      # Save travel_time as seconds in the database
-      @travel_time_in_seconds = @travel_time_route.duration.value
+      @google_data = helpers.google_maps_route_data(@locations)
+      # Add current user_id to Trip 
+      @google_values = {"user_id" => Current.user.id, "distance" => remove_commas(@google_data[0]).to_i, "travel_time" =>  @google_data[1]}
     end
 
-    # Add current user_id to Trip 
-    @google_values = {"user_id" => Current.user.id, "distance" => remove_commas(@distance).to_i, "travel_time" =>  @travel_time_in_seconds}
     @trip = Trip.new(trip_params.merge(@google_values))
 
     if @trip.save

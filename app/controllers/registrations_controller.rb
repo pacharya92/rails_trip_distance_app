@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
     else
       # Show error if user cannot be saved to the database 
       # Flash errors and redirect back to sign_up_path
-      flash[:messages] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       redirect_to sign_up_path
     end
   end

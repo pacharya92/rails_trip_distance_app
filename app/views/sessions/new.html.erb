@@ -1,8 +1,10 @@
 <section class="h-screen">
-  <% flash.each do |type, msg| %>
-    <div id="hideMe" class="sticky top-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 text-center rounded relative">
-      <%= msg %>
-    </div>
+  <% if flash.key? :alert %>
+    <% flash.each do |type, msg| %>
+      <div class="sticky top-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 text-center rounded relative">
+        <%= msg %>
+      </div>
+    <% end %>
   <% end %>
   <div class="px-6 h-full text-gray-800">
     <div

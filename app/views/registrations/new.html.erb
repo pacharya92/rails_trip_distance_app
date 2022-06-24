@@ -1,6 +1,6 @@
-<% if flash[:messages] %>
+<% if flash[:errors] %>
   <div class="sticky top-0 bg-red-100 border border-red-400 text-red-700 py-3 text-center rounded relative">
-    <% flash[:messages].each do |message| %>
+    <% flash[:errors].each do |message| %>
       <h2><%= message %> </h2>
     <% end %>
   </div>

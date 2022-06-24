@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_action :require_user_logged_in!
+
   # Instantiates new trip and build location attributes
   def new
     @trip = Trip.new
@@ -22,7 +24,7 @@ class TripsController < ApplicationController
     else
       # Show error if trip cannot be saved to the database 
       # Flash errors and redirect back to new_trip_path
-      flash[:messages] = @trip.errors.full_messages.join("<br/>").html_safe 
+      flash[:errors] = @trip.errors.full_messages.join("<br/>").html_safe 
       redirect_to new_trip_path
     end
   end

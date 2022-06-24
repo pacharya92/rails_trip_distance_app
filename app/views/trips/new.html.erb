@@ -1,5 +1,7 @@
-<% flash.each do |type, msg| %>
-  <%= content_tag :div, msg.html_safe, { class:"top-0 bg-red-100 text-xl border border-red-400 text-red-700 px-4 py-3 text-center rounded relative"} %>
+<% if flash.key? :errors %>
+  <% flash.each do |type, msg| %>
+    <%= content_tag :div, msg.html_safe, { class:"top-0 bg-red-100 text-xl border border-red-400 text-red-700 px-4 py-3 text-center rounded relative"} %>
+  <% end %>
 <% end %>
 <div class="w-full bg-no-repeat bg-cover" style="background-image: url(<%= asset_path('default-map.svg')%>); height: 100vh; overflow-y: hidden;">
   <%= render partial: '/trips/form/trips_form', :trip => @trip %>

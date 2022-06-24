@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'sessions#welcome'
+  root to: redirect('/sign_in')
 
   resources :users, only: [:new, :create]
   resources :locations
@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'sessions#create'
 
   get '/trip', to: 'trips#new'
-  get '/create_trip', to: 'trips#create_trip_modal'
   get '/show_trip', to: 'trips#show'
   post '/create_trip', to: 'trips#create'
 

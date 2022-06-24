@@ -1,7 +1,6 @@
-# README
+# Trip Distance App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple web app that calculates the distance and travel_time between locations
 
 Things you may want to cover:
 

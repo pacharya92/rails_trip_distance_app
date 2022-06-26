@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     # allows only logged in user
     redirect_to sign_in_path, alert: 'You must be signed in' if Current.user.nil?
   end
+  def redirect_if_user_logged_in
+    # redirect to trip_show page if logged in 
+    redirect_to trip_show_path, alert: 'You are already logged in' if Current.user.present?
+  end
 end

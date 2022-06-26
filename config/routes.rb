@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/welcome', to: 'sessions#welcome'
-
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
 

@@ -13,36 +13,3 @@
  *= require_tree .
  *= require_self
  */
- /* html, body {
-  overflow: hidden;
-  height: 100%;
-}
-
- body > div{
-  border:1px solid grey;
-}
-html, body, #hideContainer {
-  height:100%;
-  width:100%;
-  margin:0;
-  padding:0;
-}
-#hideContainer {
-  overflow:hidden;
-  position:relative;
-}
-#hideMe {
-  -webkit-animation: cssAnimation 5s forwards; 
-  animation: cssAnimation 5s forwards;
-}
-@keyframes cssAnimation {
-  0%   {opacity: 1;}
-  90%  {opacity: 1;}
-  100% {opacity: 0;}
-}
-@-webkit-keyframes cssAnimation {
-  0%   {opacity: 1;}
-  90%  {opacity: 1;}
-  100% {opacity: 0;}
-} */
-

@@ -41,14 +41,16 @@ bundle install && npm install
 ```
 
 ### Set environment variables
-Create a `.env` file at the root of the project folder
-Get a [GOOGLE_MAPS_API_KEY](https://developers.google.com/maps)
-Add `GOOGLE_MAPS_API_KEY=enter_google_api_key_here` to `.env` file
+- Create a `.env` file at the root of the project folder
+- Get a [GOOGLE_MAPS_API_KEY](https://developers.google.com/maps)
+- Add `GOOGLE_MAPS_API_KEY=enter_google_api_key_here` to `.env` file
 
 ### Initialize the database
 
 ```shell
-rails db:create db:migrate db:seed
+- rails db:create 
+- rails db:migrate 
+- rails db:seed (This is optional creates it user's with trips already populated)
 ```
 
 ## Serve

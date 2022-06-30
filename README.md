@@ -2,22 +2,58 @@
 
 Simple web app that calculates the distance and travel_time between locations
 
-Things you may want to cover:
+## Technologies Used
+- Ruby 2.7.1
+- Rails 7 
+- Hotwire Turbo(StimulusJS and Turbo Frames)
+- TailwindCSS 
 
-* Ruby version
+## Install
 
-* System dependencies
+### Clone the repository
 
-* Configuration
+```shell
+git clone git@github.com:pacharya92/rails_trip_distance_app.git
+```
 
-* Database creation
+### Check your Ruby version
 
-* Database initialization
+```shell
+ruby -v
+```
 
-* How to run the test suite
+The output should start with something like `ruby 2.7.1` higher versions are fine 
 
-* Services (job queues, cache servers, search engines, etc.)
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* Deployment instructions
+```shell
+rbenv install 2.7.1
+```
 
-* ...
+### Install dependencies
+
+Install [Node](https://nodejs.org/en/) `16.15.1` or higher 
+
+Using [Bundler](https://github.com/bundler/bundler) and [NPM](https://nodejs.org/en/):
+
+```shell
+bundle install && npm install
+```
+
+### Set environment variables
+Create a `.env` file at the root of the project folder
+Get a [GOOGLE_MAPS_API_KEY](https://developers.google.com/maps)
+Add `GOOGLE_MAPS_API_KEY=enter_google_api_key_here` to `.env` file
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+
+## Serve
+
+```shell
+rails s
+```
+

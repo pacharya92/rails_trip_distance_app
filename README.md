@@ -48,9 +48,9 @@ bundle install && npm install
 ### Initialize the database
 
 ```shell
-- rails db:create 
-- rails db:migrate 
-- rails db:seed (This is optional creates it user's with trips already populated)
+rails db:create 
+rails db:migrate 
+rails db:seed (This is optional creates it user's with trips already populated)
 ```
 
 ## Serve
